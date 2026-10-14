@@ -1,30 +1,117 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contador de Eventos | Colegio Bolívar</title>
+  <title>Contador - Colegio Bolívar</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #071426;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .container {
+      text-align: center;
+      background: #10243d;
+      padding: 45px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px #00e5ff33;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h1 {
+      color: #00e5ff;
+      font-size: 28px;
+    }
+
+    p {
+      color: #aabbd0;
+    }
+
+    #contador {
+      font-size: 85px;
+      font-weight: bold;
+      margin: 30px 0;
+      color: white;
+    }
+
+    button {
+      padding: 15px 30px;
+      margin: 8px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 17px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .sumar {
+      background: #00e5ff;
+      color: #071426;
+      box-shadow: 0 0 18px #00e5ff88;
+    }
+
+    .sumar:hover {
+      background: #70f3ff;
+      transform: scale(1.05);
+    }
+
+    .reiniciar {
+      background: transparent;
+      color: #ff6584;
+      border: 2px solid #ff6584;
+    }
+
+    .reiniciar:hover {
+      background: #ff6584;
+      color: white;
+    }
+  </style>
 </head>
+
 <body>
+  <div class="container">
+    <h1>Colegio Bolívar</h1>
+    <p>Contador de eventos</p>
 
-  <h1>Eventos Colegio Bolívar</h1>
-  <h2>Contador de Clicks</h2>
+    <div id="contador">0</div>
 
-  <p>Clicks realizados: <span id="contador">0</span></p>
+    <button class="sumar" onclick="incrementar()">
+      + Agregar Click
+    </button>
 
-  <button id="boton">¡Haz click!</button>
+    <button class="reiniciar" onclick="reiniciar()">
+      Reiniciar
+    </button>
+  </div>
 
   <script>
     let clicks = 0;
 
-    const contador = document.getElementById("contador");
-    const boton = document.getElementById("boton");
-
-    boton.addEventListener("click", function () {
+    function incrementar() {
       clicks++;
-      contador.textContent = clicks;
-    });
-  </script>
+      document.getElementById("contador").textContent = clicks;
+    }
 
+    function reiniciar() {
+      clicks = 0;
+      document.getElementById("contador").textContent = clicks;
+    }
+  </script>
 </body>
 </html>
+
