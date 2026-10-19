@@ -4,114 +4,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contador - Colegio Bolívar</title>
+  <title>Contador de Eventos</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #071426;
-      font-family: Arial, sans-serif;
+      background: #0b1120;
       color: white;
-    }
-
-    .container {
+      font-family: Arial, sans-serif;
       text-align: center;
-      background: #10243d;
-      padding: 45px;
-      border-radius: 20px;
-      box-shadow: 0 0 30px #00e5ff33;
-      width: 90%;
-      max-width: 400px;
+      padding: 50px 20px;
     }
 
     h1 {
-      color: #00e5ff;
-      font-size: 28px;
-    }
-
-    p {
-      color: #aabbd0;
+      color: #00ffff;
     }
 
     #contador {
-      font-size: 85px;
-      font-weight: bold;
-      margin: 30px 0;
-      color: white;
+      font-size: 70px;
+      margin: 30px;
+      color: #00ff99;
     }
 
     button {
-      padding: 15px 30px;
-      margin: 8px;
+      background: #00ffff;
+      color: #08111f;
       border: none;
-      border-radius: 12px;
+      padding: 15px 25px;
+      margin: 10px;
+      border-radius: 10px;
       cursor: pointer;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: bold;
-      transition: 0.2s;
     }
 
-    .sumar {
-      background: #00e5ff;
-      color: #071426;
-      box-shadow: 0 0 18px #00e5ff88;
+    button:hover {
+      background: #00ff99;
+      box-shadow: 0 0 15px #00ff99;
     }
 
-    .sumar:hover {
-      background: #70f3ff;
-      transform: scale(1.05);
-    }
-
-    .reiniciar {
-      background: transparent;
-      color: #ff6584;
-      border: 2px solid #ff6584;
-    }
-
-    .reiniciar:hover {
-      background: #ff6584;
+    input {
+      padding: 12px;
+      border-radius: 8px;
+      border: 2px solid #00ffff;
+      background: #172238;
       color: white;
+      font-size: 16px;
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>Colegio Bolívar</h1>
-    <p>Contador de eventos</p>
 
-    <div id="contador">0</div>
+  <h1 id="titulo">Mi Evento</h1>
 
-    <button class="sumar" onclick="incrementar()">
-      + Agregar Click
-    </button>
+  <input
+    type="text"
+    id="nuevoTitulo"
+    placeholder="Escribe el nombre del evento"
+    oninput="cambiarTitulo()"
+  >
 
-    <button class="reiniciar" onclick="reiniciar()">
-      Reiniciar
-    </button>
-  </div>
+  <div id="contador">0</div>
+
+  <button onclick="aumentar()">+1</button>
+  <button onclick="disminuir()">-1</button>
+  <button onclick="reiniciar()">Reiniciar Contador</button>
 
   <script>
-    let clicks = 0;
+    let contador = 0;
 
-    function incrementar() {
-      clicks++;
-      document.getElementById("contador").textContent = clicks;
+    function actualizarContador() {
+      document.getElementById("contador").textContent = contador;
+    }
+
+    function aumentar() {
+      contador++;
+      actualizarContador();
+    }
+
+    function disminuir() {
+      contador--;
+      actualizarContador();
     }
 
     function reiniciar() {
-      clicks = 0;
-      document.getElementById("contador").textContent = clicks;
+      contador = 0;
+      actualizarContador();
+    }
+
+    function cambiarTitulo() {
+      let texto = document.getElementById("nuevoTitulo").value;
+      document.getElementById("titulo").textContent = texto || "Mi Evento";
     }
   </script>
+
 </body>
 </html>
-
